@@ -1,1 +1,266 @@
-[]
+[
+    {
+        "order_number": "MJ62439",
+        "name": "\\",
+        "email": "adru@s.com",
+        "payment_method": "blik",
+        "delivery_method": null,
+        "address": null,
+        "locker_code": null,
+        "size": "S",
+        "exclusions": "",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 2,
+                "price": 249.99
+            }
+        ],
+        "total": 499.98,
+        "status": "Wys\u0142ane",
+        "date": "2025-05-27 20:20:34"
+    },
+    {
+        "order_number": "MJ75636",
+        "name": "Andrzej Lesny",
+        "email": "s@s.com",
+        "payment_method": "blik",
+        "delivery_method": null,
+        "address": null,
+        "locker_code": null,
+        "size": "L",
+        "exclusions": "lakers",
+        "items": [
+            {
+                "product_id": "1",
+                "name": "Mystery Box NBA",
+                "qty": 2,
+                "price": 199.99
+            }
+        ],
+        "total": 399.98,
+        "status": "Anulowane",
+        "date": "2025-05-28 16:21:01"
+    },
+    {
+        "order_number": "MJ60900",
+        "name": "J s",
+        "email": "s2@ss.pl",
+        "payment_method": "blik",
+        "delivery_method": null,
+        "address": null,
+        "locker_code": null,
+        "size": "XL",
+        "exclusions": "lakers",
+        "items": [
+            {
+                "product_id": "1",
+                "name": "Mystery Box NBA",
+                "qty": 1,
+                "price": 199.99
+            }
+        ],
+        "total": 199.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-05-28 16:25:58"
+    },
+    {
+        "order_number": "MJ71103",
+        "name": "Andrzej Lesny",
+        "email": "s2@ss.pl",
+        "payment_method": "BLIK",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "ZO90",
+        "size": "XL",
+        "exclusions": "Lakers",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 2,
+                "price": 249.99
+            }
+        ],
+        "total": 499.98,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-05-28 16:33:19"
+    },
+    {
+        "order_number": "MJ75259",
+        "name": "Jakub",
+        "email": "s2@ss.pl",
+        "payment_method": "BLIK",
+        "delivery_method": "adres",
+        "address": "wys",
+        "locker_code": null,
+        "size": "S",
+        "exclusions": "lakers",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 2,
+                "price": 249.99
+            }
+        ],
+        "total": 499.98,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-05-28 16:35:13"
+    },
+    {
+        "order_number": "MJ39385",
+        "name": "Test",
+        "email": "test@gmail.com",
+        "payment_method": "BLIK",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "ZWAW123",
+        "size": "S",
+        "exclusions": "zero",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 1,
+                "price": 249.99
+            }
+        ],
+        "total": 249.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-05-28 16:36:28"
+    },
+    {
+        "order_number": "MJ49443",
+        "name": "Test2",
+        "email": "test2@gmial.ocm",
+        "payment_method": "BLIK",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "waw123",
+        "size": "S",
+        "exclusions": "lakers",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 1,
+                "price": 249.99
+            }
+        ],
+        "total": 249.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-05-28 16:50:28"
+    },
+    {
+        "order_number": "MJ21596",
+        "name": "J Smiglo",
+        "email": "Smiglo@com.com",
+        "payment_method": "Przelew bankowy",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "WRW123",
+        "size": "XL",
+        "exclusions": "nw",
+        "items": [
+            {
+                "product_id": "3",
+                "name": "Mystery Box NBA ALL TIME",
+                "qty": 3,
+                "price": 149.99
+            }
+        ],
+        "total": 449.97,
+        "status": "Wys\u0142ane",
+        "date": "2025-06-07 16:55:58"
+    },
+    {
+        "order_number": "MJ60425",
+        "name": "M\u00f3j stary",
+        "email": "jakub4648@gmail.com",
+        "payment_method": "BLIK",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "zg87265",
+        "size": "L",
+        "exclusions": "boston jebany\r\nsimmons\r\nshaq",
+        "items": [
+            {
+                "product_id": "2",
+                "name": "Mystery Box NBA CITY",
+                "qty": 9,
+                "price": 249.99
+            }
+        ],
+        "total": 2249.91,
+        "status": "P\u0142atno\u015b\u0107 zaksi\u0119gowana",
+        "date": "2025-06-07 17:40:22"
+    },
+    {
+        "order_number": "MJ18615",
+        "name": "J Smiglo",
+        "email": "s2@ss.pl",
+        "payment_method": "BLIK",
+        "delivery_method": "paczkomat",
+        "address": null,
+        "locker_code": "w12333",
+        "size": "XL",
+        "exclusions": "",
+        "items": [
+            {
+                "product_id": "1",
+                "name": "Mystery Box NBA",
+                "qty": 1,
+                "price": 199.99
+            }
+        ],
+        "total": 199.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-06-07 17:57:43"
+    },
+    {
+        "order_number": "MJ20148",
+        "name": "Andrzej Lesny",
+        "email": "jakub4648@gmail.com",
+        "payment_method": "BLIK",
+        "delivery_method": "adres",
+        "address": "wys",
+        "locker_code": null,
+        "size": "XL",
+        "exclusions": "",
+        "items": [
+            {
+                "product_id": "1",
+                "name": "Mystery Box NBA",
+                "qty": 1,
+                "price": 199.99
+            }
+        ],
+        "total": 199.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-06-21 10:52:50"
+    },
+    {
+        "order_number": "MJ61839",
+        "name": "Andrzej Lesny",
+        "email": "s@s.com",
+        "payment_method": "Przelew bankowy",
+        "delivery_method": "adres",
+        "address": "wys",
+        "locker_code": null,
+        "size": "S",
+        "exclusions": "",
+        "items": [
+            {
+                "product_id": "1",
+                "name": "Mystery Box NBA",
+                "qty": 1,
+                "price": 199.99
+            }
+        ],
+        "total": 199.99,
+        "status": "Oczekiwanie na p\u0142atno\u015b\u0107",
+        "date": "2025-06-21 10:55:13"
+    }
+]
