@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Jersey - Dziękujemy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c003e, #6b21a8);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+        }
+
+
+
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(30, 27, 75, 0.8);
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border: 3px solid #facc15;
+            text-align: center;
+        }
+
+        .court-line {
+            width: 100%;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, #facc15, #facc15 10px, transparent 10px, transparent 20px);
+            margin: 20px 0 30px;
+        }
+
+        h1 {
+            color: #facc15;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px #000;
+            font-size: 2.5rem;
+        }
+
+        .thank-you-content {
+            margin-top: 30px;
+        }
+
+        .thank-you-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .thank-you-content strong {
+            color: #facc15;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .order-number {
+            font-size: 1.8rem;
+            color: #facc15;
+            text-shadow: 0 0 10px #facc15;
+            margin: 25px 0;
+            padding: 15px;
+            background-color: rgba(30, 27, 75, 0.5);
+            border: 2px solid #facc15;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: 3px solid #facc15;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            background-color: #1e1b4b;
+            color: #facc15;
+            font-weight: 700;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #facc15;
+        }
+
+        .magic-icon {
+            font-size: 5rem;
+            margin: 20px 0;
+            color: #facc15;
+            text-shadow: 0 0 30px #facc15;
+        }
+
+        /* Login Sidebar */
+        .login-sidebar {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 350px;
+            height: 100%;
+            background-color: #1e1b4b;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            transition: right 0.4s ease;
+            z-index: 1000;
+            border-left: 4px solid #facc15;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .login-sidebar.active {
+            right: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #facc15;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 999;
+            display: none;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 120px;
+            border: 4px solid #facc15;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #facc15;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="container">
+        <h1>Dziękujemy za zamówienie!</h1>
+        <div class="court-line"></div>
+
+        <div class="magic-icon">✨</div>
+
+        <div class="thank-you-content">
+            <p>Witaj <strong>{{ name }}</strong>, Twoje zamówienie zostało przyjęte do realizacji.</p>
+            <p>Potwierdzenie zamówienia zostało wysłane na Twój adres email.</p>
+
+            <div class="order-number">
+                Numer zamówienia: MJ{{ range(10000, 99999) | random }}
+            </div>
+
+            <p>Dziękujemy za zakupy w Magic Jersey!</p>
+
+            <a href="/" class="btn">Powrót do sklepu</a>
+        </div>
+    </div>
+
+    <script>
+        // Login sidebar functionality
+        document.getElementById('loginBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('loginSidebar').classList.add('active');
+            document.getElementById('overlay').style.display = 'block';
+        });
+
+        document.getElementById('closeBtn').addEventListener('click', function() {
+            document.getElementById('loginSidebar').classList.remove('active');
+            document.getElementById('overlay').style.display = 'none';
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('loginSidebar').classList.remove('active');
+            document.getElementById('overlay').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Jersey - Logowanie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c003e, #6b21a8);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #1e1b4b;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .navbar a {
+            color: #facc15;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px #000;
+            transition: all 0.3s;
+        }
+
+        .navbar a:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 10px #facc15;
+        }
+
+        .login-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(30, 27, 75, 0.8);
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            border: 3px solid #facc15;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .court-line {
+            width: 100%;
+            height: 8px;
+            background: repeating-linear-gradient(90deg, #facc15, #facc15 10px, transparent 10px, transparent 20px);
+            margin: 20px 0 30px;
+        }
+
+        h1 {
+            color: #facc15;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px #000;
+            font-size: 2.2rem;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 150px;
+            border: 4px solid #facc15;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #facc15;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #facc15;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 3px #000;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #facc15;
+            border-radius: 8px;
+            background-color: #2c003e;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: 3px solid #facc15;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            background-color: #1e1b4b;
+            color: #facc15;
+            font-weight: 700;
+            box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px #facc15;
+        }
+
+        .register-link {
+            margin-top: 30px;
+            color: #facc15;
+            font-size: 1rem;
+        }
+
+        .register-link a {
+            color: #facc15;
+            text-decoration: underline;
+            transition: all 0.3s;
+        }
+
+        .register-link a:hover {
+            text-shadow: 0 0 10px #facc15;
+        }
+
+        .magic-glow {
+            text-shadow: 0 0 10px #facc15;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px #facc15;
+            }
+            to {
+                text-shadow: 0 0 20px #facc15;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-left">
+            <a href="/">Strona główna</a>
+            <a href="/cart">Koszyk</a>
+        </div>
+        <div class="nav-right">
+            <a href="/login" class="magic-glow">Logowanie</a>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo">
+        </div>
+
+        <h1>Logowanie</h1>
+        <div class="court-line"></div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages" style="margin-bottom: 20px;">
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}" style="
+                    padding: 10px;
+                    margin: 10px 0;
+                    border-radius: 5px;
+                    {% if category == 'error' %}
+                        background-color: #dc2626;
+                        border: 2px solid #b91c1c;
+                    {% else %}
+                        background-color: #16a34a;
+                        border: 2px solid #15803d;
+                    {% endif %}
+                    color: white;
+                    text-align: center;
+                ">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Nazwa użytkownika</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn">Zaloguj się</button>
+        </form>
+
+        <div class="register-link">
+            Nie masz konta? <a href="/register">Zarejestruj się</a>
+        </div>
+    </div>
+</body>
+</html>

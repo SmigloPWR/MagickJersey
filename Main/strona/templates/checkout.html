@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic Jersey - Zamówienie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c003e, #6b21a8);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background-color: #1e1b4b;
+        }
+
+        .navbar a {
+            color: #facc15;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: rgba(30, 27, 75, 0.9);
+            padding: 30px;
+            border-radius: 16px;
+            border: 3px solid #facc15;
+        }
+
+        h1 {
+            color: #facc15;
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #facc15;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 2px solid #facc15;
+            background-color: #1e1b4b;
+            color: #facc15;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .btn {
+            margin-top: 25px;
+            background-color: #1e1b4b;
+            color: #facc15;
+            border: 2px solid #facc15;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #facc15;
+            color: #1e1b4b;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="/">Strona główna</a>
+            <a href="/cart">Koszyk</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Finalizacja zamówienia</h1>
+
+        <form method="POST" action="/checkout">
+            <label>Imię i nazwisko:</label>
+            <input type="text" name="name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Metoda płatności:</label>
+            <select name="payment_method" required>
+                {% for method in payment_methods %}
+                    <option value="{{ method }}">{{ method }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Sposób dostawy:</label>
+            <input type="radio" name="delivery_method" value="adres" required checked> Kurier
+            <input type="radio" name="delivery_method" value="paczkomat"> Paczkomat
+
+            <div id="address-section">
+                <label>Adres (dla kuriera):</label>
+                <input type="text" name="address">
+            </div>
+
+            <div id="locker-section" class="hidden">
+                <label>Kod paczkomatu (np. WAW123):</label>
+                <input type="text" name="locker_code">
+            </div>
+
+            <label>Rozmiar koszulki:</label>
+            <select name="size" required>
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+
+            <label>Wykluczenia (drużyny / zawodnicy):</label>
+            <textarea name="exclusions" rows="4"></textarea>
+                <label>Produkty z koszyka:</label>
+                <textarea readonly rows="3" style="background-color:#2c003e;">
+                {% for item in cart_items %}
+                - {{ item.product.name }} x{{ item.quantity }}
+                {% endfor %}
+            </textarea>
+            <p style="color:#facc15; font-weight:bold;">
+                Koszt dostawy: {{ "%.2f"|format(20) }} zł
+            </p>
+            <p style="color:#facc15; font-weight:bold; margin-top:5px;">
+                Suma zamówienia: {{ total }} zł
+            </p>
+
+            <button type="submit" class="btn">Zamów i zapłać</button>
+        </form>
+    </div>
+
+    <script>
+        const addressSection = document.getElementById('address-section');
+        const lockerSection = document.getElementById('locker-section');
+        const radios = document.getElementsByName('delivery_method');
+
+        function toggleDeliveryFields() {
+            if (radios[0].checked) {
+                addressSection.classList.remove('hidden');
+                lockerSection.classList.add('hidden');
+            } else {
+                addressSection.classList.add('hidden');
+                lockerSection.classList.remove('hidden');
+            }
+        }
+
+        radios.forEach(r => r.addEventListener('change', toggleDeliveryFields));
+        toggleDeliveryFields();  // Init
+    </script>
+</body>
+</html>

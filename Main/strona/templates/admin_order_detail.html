@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły zamówienia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c003e, #6b21a8);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background-color: #1e1b4b;
+        }
+
+        .navbar a {
+            color: #facc15;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background-color: rgba(30, 27, 75, 0.9);
+            padding: 30px;
+            border-radius: 16px;
+            border: 3px solid #facc15;
+        }
+
+        h1 {
+            color: #facc15;
+            border-bottom: 2px solid #facc15;
+            padding-bottom: 10px;
+        }
+
+        .info-block {
+            margin: 20px 0;
+        }
+
+        .info-block label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #facc15;
+        }
+
+        .info-block span {
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .item-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .item-table th, .item-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.3);
+        }
+
+        .btn {
+            background-color: #1e1b4b;
+            color: #facc15;
+            border: 2px solid #facc15;
+            padding: 10px 20px;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #facc15;
+            color: #1e1b4b;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            border: 2px solid #facc15;
+            background: #1e1b4b;
+            color: #facc15;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="/">Strona główna</a>
+            <a href="/admin">Panel Admina</a>
+        </div>
+        <div><a href="/logout">Wyloguj</a></div>
+    </div>
+
+    <div class="container">
+        <h1>Zamówienie {{ order.order_number }}</h1>
+
+        <div class="info-block">
+            <label>Imię i nazwisko:</label>
+            <span>{{ order.name }}</span>
+
+            <label>Email:</label>
+            <span>{{ order.email }}</span>
+
+            <label>Metoda płatności:</label>
+            <span>{{ order.payment_method }}</span>
+
+            <label>Sposób dostawy:</label>
+            <span>{{ order.delivery_method | capitalize }}</span>
+
+            {% if order.delivery_method == "paczkomat" %}
+                <label>Kod paczkomatu:</label>
+                <span>{{ order.locker_code }}</span>
+            {% else %}
+                <label>Adres:</label>
+                <span>{{ order.address }}</span>
+            {% endif %}
+
+            <label>Rozmiar koszulki:</label>
+            <span>{{ order.size }}</span>
+
+            <label>Wykluczenia (drużyny i zawodnicy):</label>
+            <span>{{ order.exclusions }}</span>
+
+            <label>Data zamówienia:</label>
+            <span>{{ order.date }}</span>
+        </div>
+
+        <div class="info-block">
+            <label>Status zamówienia:</label>
+            <form method="POST" action="/admin/update_order_status/{{ order.order_number }}">
+                <select name="status">
+                    {% for s in statuses %}
+                    <option value="{{ s }}" {% if s == order.status %}selected{% endif %}>{{ s }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <button class="btn" type="submit">Zapisz zmiany</button>
+            </form>
+        </div>
+
+        <div class="info-block">
+            <label>Produkty:</label>
+            <table class="item-table">
+                <thead>
+                    <tr>
+                        <th>Nazwa</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order['items'] %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.qty }}</td>
+                        <td>{{ "%.2f"|format(item.price) }} zł</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
