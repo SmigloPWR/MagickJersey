@@ -6,7 +6,7 @@ from datetime import datetime
 from functools import wraps
 
 app = Flask(__name__)
-app.secret_key = 'tajny_klucz_magic_jersey'
+app.secret_key = 'MagickJersey-super-secret-key-2025'
 
 ORDERS_FILE = 'Main/orders.json'
 USERS_FILE = 'Main/users.json'
