@@ -10,6 +10,11 @@ app.secret_key = 'tajny_klucz_magic_jersey'
 
 ORDERS_FILE = 'Main/orders.json'
 USERS_FILE = 'Main/users.json'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+app = Flask(__name__,
+           template_folder=os.path.join(BASE_DIR, 'Stronaa', 'templates'),
+           static_folder=os.path.join(BASE_DIR, 'Stronaa', 'static'))
 DELIVERY_COST = 20
 if not os.path.exists(ORDERS_FILE):
     with open(ORDERS_FILE, 'w') as f:
