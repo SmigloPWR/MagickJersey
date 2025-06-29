@@ -8,8 +8,8 @@ from functools import wraps
 app = Flask(__name__)
 app.secret_key = 'tajny_klucz_magic_jersey'
 
-ORDERS_FILE = 'orders.json'
-USERS_FILE = 'users.json'
+ORDERS_FILE = 'Main/orders.json'
+USERS_FILE = 'Main/users.json'
 DELIVERY_COST = 20
 if not os.path.exists(ORDERS_FILE):
     with open(ORDERS_FILE, 'w') as f:
