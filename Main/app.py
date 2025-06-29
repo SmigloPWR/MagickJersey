@@ -5,16 +5,18 @@ import random
 from datetime import datetime
 from functools import wraps
 
-app = Flask(__name__)
-app.secret_key = 'MagickJersey-super-secret-key-2025'
 
-ORDERS_FILE = 'Main/orders.json'
-USERS_FILE = 'Main/users.json'
+
+ORDERS_FILE = './orders.json'
+USERS_FILE = './users.json'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__,
            template_folder=os.path.join(BASE_DIR, 'Stronaa', 'templates'),
            static_folder=os.path.join(BASE_DIR, 'Stronaa', 'static'))
+
+app.secret_key = 'MagickJersey-super-secret-key-2025'
+
 DELIVERY_COST = 20
 if not os.path.exists(ORDERS_FILE):
     with open(ORDERS_FILE, 'w') as f:
